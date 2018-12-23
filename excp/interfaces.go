@@ -1,6 +1,6 @@
 package excp
 
-import "github.com/kamva/nautilus/http"
+import "github.com/Kamva/nautilus/http"
 
 // IException is an interface for Exceptions
 type IException interface {
