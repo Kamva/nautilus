@@ -1,6 +1,6 @@
 package excp
 
-import "github.com/kamva/nautilus/http"
+import "github.com/Kamva/nautilus/http"
 
 // Exception is an exception for fatal error happened in libraries
 type Exception struct {
