@@ -3,7 +3,7 @@ package bootstrap
 import (
 	"time"
 
-	"github.com/Kamva/shark"
+	"github.com/Kamva/shark/middleware"
 	"github.com/kataras/iris"
 	"github.com/kataras/iris/middleware/logger"
 	"github.com/kataras/iris/websocket"
@@ -55,8 +55,8 @@ func (a *Application) Configure(Configurators ...Configurator) {
 func (a *Application) Bootstrap() *Application {
 	a.SetupErrorHandlers()
 
-	a.Use(shark.ErrorRenderer())
-	a.Use(shark.ErrorReporter())
+	a.Use(middleware.ErrorRenderer())
+	a.Use(middleware.ErrorReporter())
 	a.Use(logger.New())
 
 	return a
