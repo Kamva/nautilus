@@ -1,6 +1,7 @@
 package nautilus
 
 import (
+	"encoding/json"
 	"os"
 	"reflect"
 )
