@@ -19,7 +19,12 @@ func GetEnv(key string, fallback string) string {
 
 // Empty Check if i is empty (Zero valued)
 func Empty(i interface{}) bool {
+	if i == nil {
+		return true
+	}
+
 	v := reflect.ValueOf(i)
+
 	switch v.Kind() {
 	case reflect.Map, reflect.Array, reflect.Slice, reflect.Struct:
 		data, _ := json.Marshal(i)
