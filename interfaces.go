@@ -13,6 +13,12 @@ type BaseTaggable struct{}
 
 // GetTag Get `tag` value on the `field` of `caller`
 func (r BaseTaggable) GetTag(caller interface{}, field string, tag string) string {
-	taggedField, _ := reflect.TypeOf(caller).Elem().FieldByName(field)
+	t := reflect.TypeOf(caller)
+
+	if t.Kind() == reflect.Ptr {
+		t = t.Elem()
+	}
+
+	taggedField, _ := t.FieldByName(field)
 	return taggedField.Tag.Get(tag)
 }
