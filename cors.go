@@ -6,6 +6,7 @@ import (
 	"github.com/kataras/iris"
 )
 
+// CORS is struct containing data of CORS related headers.
 type CORS struct {
 	AllowedOrigins     []string
 	AllowedMethods     []string
@@ -13,6 +14,7 @@ type CORS struct {
 	DisableCredentials bool
 }
 
+// Handle is a middleware for adding CORS headers in response.
 func (c CORS) Handle(context iris.Context) {
 	origins := "*"
 	methods := "GET,HEAD,OPTIONS,POST,PUT,PATCH,DELETE"
