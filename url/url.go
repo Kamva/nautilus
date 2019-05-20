@@ -131,14 +131,14 @@ func (u *URL) parseParams(params QueryMap) {
 	for key, value := range params {
 		if v, ok := value.([]interface{}); ok {
 			for _, val := range v {
-				queryString = fmt.Sprintf("&%s[]=%v", key, val)
+				queryString += fmt.Sprintf("&%s[]=%v", key, val)
 			}
 		} else {
-			queryString = fmt.Sprintf("&%s=%v", key, value)
+			queryString += fmt.Sprintf("&%s=%v", key, value)
 		}
 	}
 
-	u.Query = queryString
+	u.Query = strings.TrimLeft(queryString, "&")
 }
 
 // Parse the given url into URL object
