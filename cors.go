@@ -3,7 +3,7 @@ package nautilus
 import (
 	"strings"
 
-	"github.com/kataras/iris"
+	"github.com/kataras/iris/v12"
 )
 
 // CORS is struct containing data of CORS related headers.

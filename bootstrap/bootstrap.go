@@ -4,9 +4,9 @@ import (
 	"time"
 
 	"github.com/Kamva/shark/middleware"
-	"github.com/kataras/iris"
-	"github.com/kataras/iris/middleware/logger"
-	"github.com/kataras/iris/websocket"
+
+	"github.com/kataras/iris/v12"
+	"github.com/kataras/iris/v12/middleware/logger"
 )
 
 // Configurator is just a function which accepts the framework instance.
@@ -18,17 +18,6 @@ type Configurator func(*Application)
 type Application struct {
 	*iris.Application
 	AppSpawnDate time.Time
-}
-
-// SetupWebSockets will setup web socket on given endpoint
-func (a *Application) SetupWebSockets(endpoint string, onConnection websocket.ConnectionFunc) {
-	webSocket := websocket.New(websocket.Config{})
-	webSocket.OnConnection(onConnection)
-
-	a.Get(endpoint, webSocket.Handler())
-	a.Any("/iris-webSocket.js", func(context iris.Context) {
-		_, _ = context.Write(websocket.ClientSource)
-	})
 }
 
 // SetupErrorHandlers will handle response for any kind of errors
