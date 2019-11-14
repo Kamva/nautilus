@@ -1,11 +1,10 @@
 package url
 
 import (
+	"errors"
 	"fmt"
 	"regexp"
 	"strings"
-
-	"github.com/kataras/iris/core/errors"
 )
 
 // QueryMap is key value of url query string
